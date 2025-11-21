@@ -13,7 +13,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, currentView, onChangeV
   const menuItems = [
     { id: ViewState.DASHBOARD, label: 'Dashboard', icon: LayoutDashboard },
     { id: ViewState.STUDENTS, label: 'Students', icon: Users },
-    { id: 'COURSES', label: 'Courses', icon: BookOpen }, // Placeholder ID
+    { id: ViewState.COURSES, label: 'Courses', icon: BookOpen },
     { id: 'SCHEDULE', label: 'Schedule', icon: Calendar }, // Placeholder ID
     { id: ViewState.SETTINGS, label: 'Settings', icon: Settings },
   ];
@@ -55,7 +55,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, currentView, onChangeV
                 key={item.id}
                 onClick={() => {
                    // Only switch if it's a valid view state for this demo
-                   if(item.id === ViewState.DASHBOARD || item.id === ViewState.STUDENTS || item.id === ViewState.SETTINGS) {
+                   if(Object.values(ViewState).includes(item.id as ViewState)) {
                        onChangeView(item.id as ViewState);
                    }
                    onCloseMobile();
